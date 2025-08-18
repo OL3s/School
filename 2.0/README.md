@@ -1,11 +1,11 @@
 # 2.0
 
 ## Aktive Emner
-- **EXPH0600** Examen philosophicum for ingeniørfag (7,5 stp.)
-- **IDATT2101** Algoritmer og datastrukturer (7,5 stp.)
-- **IDATT2202** Operativsystemer (7,5 stp.)
-- **IMAT2024** Matematikk for ingeniørfag 2 D (7,5 stp.)
-- **ISTT1003** Statistikk (7,5 stp.)
+- [**EXPH0600**](./exphil/readme.md) Examen philosophicum for ingeniørfag (7,5 stp.)
+- [**IDATT2101**](./alda/readme.md) Algoritmer og datastrukturer (7,5 stp.)
+- [**IDATT2202**](./operativ-system/readme.md) Operativsystemer (7,5 stp.)
+- [**IMAT2024**](./matte/readme.md) Matematikk for ingeniørfag 2 D (7,5 stp.)
+- [**ISTT1003**](./statistikk/readme.md) Statistikk (7,5 stp.)
 
 ## Fag & Eksamensdatoer
 | Dato        | Fag                                | Fagkode   | Type                |
