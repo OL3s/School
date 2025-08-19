@@ -3,7 +3,7 @@
 ## 🚀 Semesteroversikt
 | År.Semester | Link                              |
 |:-----------:|:----------------------------------|
-| **2.0**     | [Gå til semester](./2.0/Readme.md) |
+| **2.0**     | [Gå til semester](./2.0/readme.md) |
 
 ---
 
