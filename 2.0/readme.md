@@ -8,7 +8,7 @@
 - [**ISTT1003**](./statistikk/readme.md) Statistikk (7,5 stp.)
 
 ## Timeplan (standard uke)
-![timeplan](./img/timeplan.png)
+<img src="./img/timeplan.png" alt="timeplan" width="600"/>
 
 ## Fag & Eksamensdatoer
 | Dato        | Fag                                | Fagkode   | Type                |
