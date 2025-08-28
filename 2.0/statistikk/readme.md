@@ -10,15 +10,7 @@
 
 **Godkjenning per innlevering: 8/10 poeng (80%)**
 
-### Log:
-- [ ] 22.Aug.2025
-
-## Python Hub
-
-## Forelesninger
-| dato | emne |
-|------|-------|
-| 19.08.2025 | [Beskrivende-Statestikk](./forelesning/for-19-08-25.md) |
+[**Forelesninger**](./forelesning/)
 
 ## Annet
 
