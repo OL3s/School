@@ -2,9 +2,8 @@
 
 ## Aktive Emner
 - [**EXPH0600**](./exphil/readme.md) Examen philosophicum for ingeniørfag (7,5 stp.)
-- [**IDATT2101**](./alda/readme.md) Algoritmer og datastrukturer (7,5 stp.)
+- [**IDATT2101**](./algda/readme.md) Algoritmer og datastrukturer (7,5 stp.)
 - [**IDATT2202**](./operativ-system/readme.md) Operativsystemer (7,5 stp.)
-- [**IMAT2024**](./matematikk/readme.md) Matematikk for ingeniørfag 2 D (7,5 stp.)
 - [**ISTT1003**](./statistikk/readme.md) Statistikk (7,5 stp.)
 
 ## Timeplan (standard uke)
