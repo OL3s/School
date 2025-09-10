@@ -63,3 +63,18 @@ $\mathrm{Var}(X) = np(1-p) = 3 \cdot \frac{1}{6} \cdot \frac{5}{6} = \frac{15}{3
 d. hva er P(X \leq 4 | X \leq 2)
 - $P(X \leq 4 | X \leq 2) = \frac{P(X \leq 4 \cap X \leq 2)}{P(X \leq 2)} = \frac{P(X \leq 2)}{P(X \leq 2)} = 1$
 - $P(X \leq 4 | X \leq 2) = \frac{0.1219}{ 1 - P(X \leq 1)} = \frac{0.1219}{1 - 0.1937} = \frac{0.1219}{1-0.376} = 0.1949$
+
+**Binomisk fordeling og Geometrisk fordeling**
+
+- $X \sim \text{Geom}(p)$
+- $P(X = k) = (1-p)^{k-1} p$
+    - for $k = 1, 2, 3, ...$
+- $F(k) = P(X \leq k) = 1 - (1-p)^k$
+- $E(X) = \frac{1}{p}$
+- $\mathrm{Var}(X) = \frac{1-p}{p^2}$
+- $X = \text{antall forsøk til første suksess}$
+
+$P(X = 1) = p \cdot (1-p)^{1-1} = p$
+
+For eksempel, hvis $p = \frac{1}{6}$:
+$P(X = 1) = \frac{1}{6} \cdot \left(\frac{5}{6}\right)^{0} = \frac{1}{6}$
