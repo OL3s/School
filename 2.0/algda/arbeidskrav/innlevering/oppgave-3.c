@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
         stats[s].num_elements = size;
     }
 
-    printf("\nStatistics:\n");
+    printf("\nStatistics default quicksort:\n");
     for (int s = 0; s < size_count; s++) {
         printf("Size of array: %-8d | %-12f secounds\n", stats[s].num_elements, stats[s].time_taken);
     }
