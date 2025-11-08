@@ -18,7 +18,8 @@ void* thread_func(void* arg) {
 
 int main() {
     pthread_t t;
-    if(pthread_create(&t, NULL, thread_func, NULL) != 0) { // Arguments: thread, attributes, function, arg; return 0 on success
+    // Arguments: thread, attributes, function, arg; return 0 on success
+    if(pthread_create(&t, NULL, thread_func, NULL) != 0) { 
         perror("Failed to create thread");
         return 1;
     }
@@ -33,6 +34,7 @@ int main() {
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 int main() {
     pid_t pid = fork();
@@ -43,7 +45,8 @@ int main() {
     } else if (pid > 0) {
         // Parent process
         printf("Hello from parent process!\n");
-        wait(NULL); // Wait for child process to finish
+        int status;
+        wait(&status); // Wait for child to finish
     } else {
         // Fork failed
         perror("fork");
@@ -69,6 +72,7 @@ struct TCB {
     struct process* parent;   // Pointer to PCB
 }
 ```
+This is needed to manage and schedule threads effectively, allowing the OS to switch between threads, save their state, and resume them later. It is essential for multitasking and ensuring that each thread gets its fair share of CPU time.
 
 ### 1.4 Cooperative vs Pre-emptive threading
 #### Difference between cooperative and pre-emptive threading
@@ -80,15 +84,15 @@ Pre-emptive threading is when the OS decides when to switch between threads, whi
 1. Thread A is running and decides to yield control.
 2. Thread A saves its context ([TCB](#1.3-Thread-Control-Block-TCB)).
 3. Thread A updates its state to "Ready" and adds itself to the ready queue.
-4. The scheduler selects another thread (e.g., Thread B) to run.
+4. The scheduler selects another thread (for example, Thread B) to run.
 5. Thread B restores its context and starts running.
 
 #### Context switch steps for pre-emptive threading
 1. The OS timer interrupt occurs.
-2. The currently running thread (e.g., Thread A) is pre-empted.
+2. The currently running thread (for example, Thread A) is pre-empted.
 3. The OS saves the context of Thread A (TCB struct).
 4. The OS updates the state of Thread A to "Ready" and adds it to the ready queue.
-5. The scheduler selects another thread (e.g., Thread B) to run.
+5. The scheduler selects another thread (for example, Thread B) to run.
 6. Thread B restores its context and starts running.
 
 ## 2. C program with POSIX threads

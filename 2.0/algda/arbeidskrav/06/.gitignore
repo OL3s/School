@@ -1,0 +1,40 @@
+# Compiled executables
+*.bin
+*.vs
+*.vscode
+bin/
+
+# Compressed files
+*.huff
+*.compressed
+
+# Export directory
+export/
+
+# Test files
+test*.txt
+
+# Temporary files
+*.tmp
+*~
+
+# Debug files
+*.dSYM/
+*.debug
+tests/export_comp/
+tests/export_decomp/
+
+
+
+# VS Code settings
+.vscode/
+*.vsettings.json
+
+# Visual Studio settings
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+
+oppgave/*.txt
