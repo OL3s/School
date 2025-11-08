@@ -20,6 +20,7 @@
 
 #define DEFAULT_TABLE_SIZE 1000003UL  // standard: a prime ~ 1e6
 #define DEFAULT_KEY_COUNT  1000000UL  // number of keys in pool (at least m for 100 % filling)
+#define DEFAULT_LOAD_FACTORS {0.50, 0.80, 0.90, 0.99, 1.00} // load factors to test
 
 typedef enum { SLOT_EMPTY = 0, SLOT_USED = 1 } SlotState;
 
@@ -163,7 +164,7 @@ static size_t insert_linear(OpenAddrTable *t, uint64_t key) {
     fprintf(stderr, "Error: linear probing failed to insert after %zu probes (table full?)\n", collisions);
     exit(2);
 }
-
+// Insert key into table using double hashing
 static size_t insert_double_hash(OpenAddrTable *t, uint64_t key) {
     size_t m = t->size;
     size_t pos = h1(key, m);
@@ -230,10 +231,15 @@ static void run_experiment_set(const uint64_t *keys, size_t keysPool, size_t tab
 
 /* ---------- Utility functions ---------- */
 // Print header for the results
-static void print_header(size_t tableSize, size_t keysPool) {
+static void print_header(size_t tableSize, size_t keysPool, const double *loads, size_t numLoads) {
     printf("=== Del 2: Hashing med åpen adressering ===\n");
     printf("Tabellstørrelse: %zu | Antall nøkler i pool: %zu\n", tableSize, keysPool);
-    printf("Fyllingsgrader: 50%%, 80%%, 90%%, 99%%, 100%%\n");
+    printf("Fyllingsgrader: ");
+    for (size_t i = 0; i < numLoads; i++) {
+        printf("%s ", (i == 0) ? "" : ", ");
+        printf("%.0f%%", loads[i] * 100.0);
+    }
+    printf("\n");
     printf("Kollisjoner telles som antall ekstra forsøk etter h1-plass.\n\n");
 }
 
@@ -274,18 +280,18 @@ int main(int argc, char **argv) {
     }
     generate_unique_numbers(keys, keysPool, seed);
 
-    print_header(tableSize, keysPool);
+    // Define load factors
+    const double loads[] = DEFAULT_LOAD_FACTORS;
+    size_t numLoads = sizeof(loads)/sizeof(loads[0]);
+    print_header(tableSize, keysPool, loads, numLoads);
 
-    const double loads[] = {0.50, 0.80, 0.90, 0.99, 1.00};
-    const char*  labels[] = {"50%", "80%", "90%", "99%", "100%"};
-
-    for (size_t i = 0; i < sizeof(loads)/sizeof(loads[0]); i++) {
-        uint64_t collL = 0, collD = 0;
-        double msL = 0.0, msD = 0.0;
+    for (size_t i = 0; i < numLoads; i++) {
+        uint64_t collL = 0, collD = 0;  // Collision counts     {linear, double}
+        double msL = 0.0, msD = 0.0;    // Time in milliseconds {linear, double}
 
         run_experiment_set(keys, keysPool, tableSize, loads[i], &collL, &msL, &collD, &msD);
 
-        printf("- Fyllingsgrad %s:\n", labels[i]);
+        printf("- Fyllingsgrad %.0f%%:\n", loads[i] * 100.0);
         printf("  Linear probing   -> kollisjoner: %llu, tid: %.2f ms\n",
                (unsigned long long)collL, msL);
         printf("  Double hashing   -> kollisjoner: %llu, tid: %.2f ms\n\n",
